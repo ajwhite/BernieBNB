@@ -1,5 +1,6 @@
 class VisitsController < ApplicationController
   def new
+    byebug
     @visit ||= Visit.new(user_id: params[:user_id])
   end
 

@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   def require_current_user
     if current_user.nil?
       redirect_to root_url
-    elsif params[:user_id] && current_user.id != params[:user_id]
+    elsif params[:user_id] && current_user.id != params[:user_id].to_i
       redirect_to user_url(current_user)
     end
   end

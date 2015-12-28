@@ -116,6 +116,8 @@ GEM
     jwt (1.5.2)
     launchy (2.4.3)
       addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     listen (3.0.5)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -284,6 +286,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   launchy
+  letter_opener
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
