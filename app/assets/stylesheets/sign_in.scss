@@ -24,7 +24,7 @@ $darkgray: #8A8A8A;
   border: none;
   border-radius: 3px;
   width: 100%;
-  max-width: 300px;
+  max-width: 350px;
   padding-top: 10px;
   text-align: center;
   text-transform: uppercase;
@@ -34,6 +34,7 @@ div.sign-in  {
   h1 {
     font-weight: normal;
     letter-spacing: 0.1rem;
+    text-align: center;
   }
 
   section.instructions {
@@ -68,6 +69,7 @@ div.sign-in  {
       }
     }
   }
+
   section.sign-up {
 
       h1 {
@@ -79,7 +81,15 @@ div.sign-in  {
 
         &:hover {
           cursor: pointer;
-          background-color: $lightorange;
+          background-color: $orange;
+        }
+      }
+
+      a.facebook {
+        background-color: $green;
+
+        &:hover {
+          background-color: $darkgreen;
         }
       }
     }
