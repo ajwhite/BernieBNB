@@ -33,11 +33,11 @@
    margin: 1rem auto;
    background-color: $lightorange;
    color: white;
-   height: 42px;
+   height: 48px;
    font-size: 18px;
    font-family: "Lato";
    font-weight: 600;
-   letter-spacing: 0.15em;
+   letter-spacing: 1px;
    text-decoration: none;
    border: none;
    width: 100%;
@@ -176,6 +176,7 @@ form:not(.button_to) {
     @extend .button-special;
     background-color: $green;
     border: 1px solid #38c556;
+    height: 48px;
 
     &:hover {
       cursor: pointer;

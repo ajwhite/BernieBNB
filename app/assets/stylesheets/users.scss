@@ -17,7 +17,7 @@ $lightpurple: #932EF1;
   margin: 1rem auto;
   background-color: $lightorange;
   color: white;
-  height: 42px;
+  height: 48px;
   font-size: 1.2em;
   font-family: "Lato";
   font-weight: 600;
@@ -113,4 +113,21 @@ div.user-home {
       }
     }
   }
+}
+
+div.profile-page {
+  input.delete {
+    @extend .button-special;
+    background-color: $lightorange;
+    cursor: pointer;
+    padding-bottom: 10px;
+    height: 48px;
+
+    &:hover {
+      background-color: $orange;
+    }
+
+  }
+
+
 }
