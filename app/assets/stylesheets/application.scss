@@ -33,16 +33,16 @@
    margin: 1rem auto;
    background-color: $lightorange;
    color: white;
-   height: 42px;
+   height: 48px;
    font-size: 18px;
    font-family: "Lato";
    font-weight: 600;
-   letter-spacing: 0.15em;
+   letter-spacing: 1px;
    text-decoration: none;
    border: none;
    width: 100%;
    border-radius: 3px;
-   max-width: 300px;
+   max-width: 350px;
    padding-top: 10px;
    text-align: center;
    text-transform: uppercase;
@@ -91,7 +91,7 @@ html {
 
 div {
   width: 100%;
-  max-width: 300px;
+  max-width: 375px;
   margin: auto;
 }
 
@@ -176,6 +176,7 @@ form:not(.button_to) {
     @extend .button-special;
     background-color: $green;
     border: 1px solid #38c556;
+    height: 48px;
 
     &:hover {
       cursor: pointer;

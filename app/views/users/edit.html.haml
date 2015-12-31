@@ -19,7 +19,8 @@
 
     = f.submit button_text, class: 'submit'
   - if @user.email_confirmed
-    = button_to 'Delete Account',
+    = button_to 'Delete',
       { action: 'destroy', id: @user.id },
         method: 'delete',
+        class: 'delete',
         data: { confirm: "Are you sure? This will permanently delete your account." }

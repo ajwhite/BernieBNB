@@ -19,7 +19,7 @@ $darkgray: #8A8A8A;
   margin: 1rem auto;
   background-color: $orange;
   color: white;
-  height: 42px;
+  height: 48px;
   font-size: 1.2em;
   font-family: "Lato";
   font-weight: 600;
@@ -28,7 +28,7 @@ $darkgray: #8A8A8A;
   border-radius: 3px;
   border: none;
   width: 100%;
-  max-width: 300px;
+  max-width: 350px;
   padding-top: 10px;
   text-align: center;
   text-transform: uppercase;
@@ -39,6 +39,7 @@ div.user-new-visit {
     @extend .button-special;
     background-color: $lightorange;
     border: 1px solid #f44343;
+    height: 48px;
 
     &:hover {
       cursor: pointer;
