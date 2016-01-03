@@ -15,8 +15,8 @@ class Visit < ActiveRecord::Base
   end
 
   def start_and_end_dates
-    starting = start_date.strftime("%m/%d")
-    ending = end_date.strftime("%m/%d")
+    starting = start_date.strftime("%m/%d/%y")
+    ending = end_date.strftime("%m/%d/%y")
 
     "#{starting} - #{ending}"
   end

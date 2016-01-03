@@ -37,18 +37,22 @@ RSpec.describe UserMailer, type: :mailer do
   end
 
   it 'should mention the correct host' do
-    expect(@email).to have_body_text(/#{@host.first_name}/)
+    expect(@email).to have_body_text(/Hi #{@host.first_name}/)
   end
 
   it 'should mention the correct visit information' do
+    expect(@email).to have_body_text(/You’ve been contacted by a traveler!/)
     expect(@email).to have_body_text(/#{@visitor.first_name}/)
     expect(@email).to have_body_text(/#{@visitor.phone}/)
     expect(@email).to have_body_text(/#{@visitor.email}/)
     expect(@email).to have_body_text(/#{@visit.start_and_end_dates}/)
-    expect(@email).to have_body_text(/#{@visit.num_travelers}/)
+    expect(@email).to have_body_text(/Group of #{@visit.num_travelers}/)
   end
 
-  it 'should contain the correct link'
+  it 'should contain the correct link' do
+    link = ActionController::Base.helpers.link_to("Bernie BNB - Profile", edit_hosting_url(@hosting))
+    expect(@email).to have_body_text(/#{link}/)
+  end
 
 
 

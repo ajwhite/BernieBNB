@@ -2,10 +2,10 @@ Hi <%= @host.first_name %>,
 
 You’ve been contacted by a traveler!
 
-<%= @visitor.first_name %>
-<%= @visitor.phone %>
-<%= @visitor.email %>
-<%= @visit.start_and_end_dates %>
+Name: <%= @visitor.first_name %>
+Phone: <%= @visitor.phone %>
+Email: <%= @visitor.email %>
+Dates: <%= @visit.start_and_end_dates %>
 Group of <%= @visit.num_travelers %>
 
 Reply to this email, or contact <%= @visitor.first_name %> at <%= @visitor.phone %> for more details!
