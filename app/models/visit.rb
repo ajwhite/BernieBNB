@@ -13,4 +13,11 @@ class Visit < ActiveRecord::Base
       .near(self.zipcode, 25, order: "distance")
       .where("max_guests >= ?", num_travelers)
   end
+
+  def start_and_end_dates
+    starting = start_date.strftime("%m/%d")
+    ending = end_date.strftime("%m/%d")
+
+    "#{starting} - #{ending}"
+  end
 end

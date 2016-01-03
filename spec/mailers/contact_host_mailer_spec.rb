@@ -32,6 +32,24 @@ RSpec.describe UserMailer, type: :mailer do
     expect(@email).to deliver_to('joe@gmail.com')
   end
 
+  it 'should have the correct subject' do
+    expect(@email).to have_subject(/Bernie BNB - You've been contacted!/)
+  end
+
+  it 'should mention the correct host' do
+    expect(@email).to have_body_text(/#{@host.first_name}/)
+  end
+
+  it 'should mention the correct visit information' do
+    expect(@email).to have_body_text(/#{@visitor.first_name}/)
+    expect(@email).to have_body_text(/#{@visitor.phone}/)
+    expect(@email).to have_body_text(/#{@visitor.email}/)
+    expect(@email).to have_body_text(/#{@visit.start_and_end_dates}/)
+    expect(@email).to have_body_text(/#{@visit.num_travelers}/)
+  end
+
+  it 'should contain the correct link'
+
 
 
 end
