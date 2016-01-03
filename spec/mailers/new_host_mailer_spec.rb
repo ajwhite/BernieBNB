@@ -1,5 +1,4 @@
 require "rails_helper"
-require 'byebug'
 
 RSpec.describe UserMailer, type: :mailer do
   describe "New Host Email" do
