@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Contact, type: :model do
-  before :all do
+  before :each do
     FactoryGirl.create :contact, visitor_id: 1, hosting_id: 2
   end
 

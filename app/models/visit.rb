@@ -19,4 +19,11 @@ class Visit < ActiveRecord::Base
       return available_hostings
     end
   end
+
+  def start_and_end_dates
+    starting = start_date.strftime("%m/%d/%y")
+    ending = end_date.strftime("%m/%d/%y")
+
+    "#{starting} - #{ending}"
+  end
 end
