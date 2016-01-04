@@ -27,11 +27,6 @@ RSpec.describe User, type: :model do
     expect(User.create(uid: SecureRandom.urlsafe_base64(17),
       email: "test@fakemail.com", phone: "2345678901")).to be_valid
     expect { FactoryGirl.create(:user, phone: "") }
-      .to raise_error ActionView::Helpers::NumberHelper::InvalidNumberError
-  end
-
-  it "bad phone number -- 1 in front" do
-    expect { FactoryGirl.create(:user, phone: "1234567890") }
       .to raise_error ActiveRecord::RecordInvalid
   end
 
