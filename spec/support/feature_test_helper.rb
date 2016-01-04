@@ -32,7 +32,14 @@ module FeatureTestHelper
     find('#hosting_max_guests').select(max_guests)
     click_button("Save")
   end
+
+  def delete_host
+    click_link "11211 (2 guests)"
+    click_link "Delete"
+  end
 end
+
+
 
 RSpec.configure do |config|
   config.include FeatureTestHelper, :type => :feature
