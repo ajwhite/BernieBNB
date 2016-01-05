@@ -9,13 +9,11 @@ Rails.application.routes.draw do
   resources :contacts, only: [:create]
   resources :visits, only: [:create, :destroy, :update, :show, :edit]
   resources :hostings, only: [:create, :destroy, :edit, :update]
-  resources :users, only: [:edit, :show, :update, :destroy]
-
-  resources :users do
+  resources :users, only: [:edit, :show, :update, :destroy] do
     member do
       get :confirm_email
     end
-
+    
     resources :visits, only: [:new, :index]
     resources :hostings, only: [:new, :index]
   end
