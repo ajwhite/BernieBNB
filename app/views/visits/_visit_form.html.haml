@@ -20,7 +20,7 @@
     .form-group
       = f.label :num_travelers, "How many total travelers?"
       = f.select :num_travelers,
-        options_for_select((1..7).zip(1..7), @visit.num_travelers || nil),
+        options_for_select((1..10).zip(1..7), @visit.num_travelers || nil),
         {},
         { class: 'form-control' }
       %span Including yourself.

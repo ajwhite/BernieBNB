@@ -10,7 +10,7 @@
     .form-group
       = f.label :max_guests, "How many can you host?"
       = f.select :max_guests,
-        options_for_select((1..7).zip(1..7), @hosting.max_guests || nil), 
+        options_for_select((1..10).zip(1..7), @hosting.max_guests || nil), 
         {},
         {class: 'form-control'}
       %span.hosting Preferred maximum number of guests.
