@@ -21,3 +21,4 @@ coverage
 .overcommit.yml
 .rvmrc
 *~
+.byebug_history

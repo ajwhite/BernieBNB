@@ -9,6 +9,8 @@ class Hosting < ActiveRecord::Base
   belongs_to :host, class_name: "User", foreign_key: :host_id
   has_many :contacts
 
+  has_many :available_dates, class_name: "AvailableHostRange"
+
   def first_name
     host.first_name
   end

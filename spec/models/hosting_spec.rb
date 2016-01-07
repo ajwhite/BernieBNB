@@ -38,4 +38,6 @@ RSpec.describe Hosting, type: :model do
     expect { FactoryGirl.create(:hosting, zipcode: "913123") }
       .to raise_error ActiveRecord::RecordInvalid
   end
+
+  it "merges available date ranges which overlap"
 end
