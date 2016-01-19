@@ -18,10 +18,19 @@ RSpec.describe AvailableHostRange, type: :model do
           start_date: DateTime.now + 5, end_date: DateTime.now).to_not be_valid
     end
 
-    it "merges available date ranges which overlap" do
+    it "identifies whether date ranges overlap" do
       FactoryGirl.create :available_host_range, hosting_id: hosting.id
-      FactoryGirl.create :available_host_range, hosting_id: hosting.id, end_date: DateTime.now + 10
-      expect(hosting.available_dates.count).to eq(1)
+      expect(
+        FactoryGirl
+          .build(:available_host_range, hosting_id: hosting.id, end_date: DateTime.now + 10)
+          .is_overlapping?
+        ).to eq(true)
+      expect(
+        FactoryGirl
+          .build(:available_host_range, hosting_id: hosting.id,
+            start_date: DateTime.now + 20, end_date: DateTime.now + 40)
+          .is_overlapping?
+        ).to eq(false)
     end
 
   end

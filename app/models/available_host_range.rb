@@ -4,18 +4,18 @@ class AvailableHostRange < ActiveRecord::Base
 
   belongs_to :hosting
 
-  # if this doesnt work, just write a method called create or update
+  def self.create_or_update(start_date, end_date)
+    date_range = AvailableHostRange.new(start_date: start_date, end_date: end_date)
 
-  def save
-    is_overlapping? ? merge_overlapping : super # super is used wrong here. take out the argument
+    date_range.is_overlapping? ? date.merge_overlapping : date.save
   end
 
   def overlapping_date
-    hosting.available_dates.where(":start_date <= end_date", start_date: start_date).where.not(id: id)
-  end
-
-  def is_overlapping?
-    !overlapping_date.empty?
+    hosting.available_dates
+      .where(":start_date <= end_date", start_date: start_date)
+      .where("start_date <= :end_date", end_date: end_date)
+      .where.not(id: id)
+      .first
   end
 
   private
@@ -28,8 +28,15 @@ class AvailableHostRange < ActiveRecord::Base
       errors.add(:end_date, "can't come before the start") unless end_date - start_date >= 0
     end
 
+    def is_overlapping?
+      !overlapping_date.nil?
+    end
+
     def merge_overlapping
-      overlapping_date.first.update(end_date: end_date)
+      params = {}
+      params[start_date] = start_date if start_date < overlapping_date.start_date
+      params[end_date] = end_date if end_date > overlapping_date.end_date
+      overlapping_date.update(end_date: end_date).update
     end
 
 end
