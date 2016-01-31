@@ -6,6 +6,7 @@ gem 'rails', '4.2.5.1'
 
 gem 'pg'
 gem 'sass-rails'
+gem 'font-awesome-sass'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'

@@ -14,4 +14,17 @@
 //= require jquery_ujs
 //= require jquery-ui/datepicker
 //= require jquery-ui/accordion
+//= require_self
 //= require_tree .
+
+window.App || (window.App = {});
+
+App.init = function() {
+  if($('#visits')) {
+    App.Visits.init();
+  }
+};
+
+$(document).ready(function() {
+  return App.init();
+});

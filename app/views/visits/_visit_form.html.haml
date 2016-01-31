@@ -8,14 +8,11 @@
       %span Zip Code near your destination.
 
     .form-group
-      = f.label :start_date, "Arriving when?"
-      = f.text_field :start_date, class: "form-control"
-      %span Arrival date.
-
-    .form-group
-      = f.label :end_date, "Departing when?"
-      = f.text_field :end_date, class: "form-control"
-      %span Departure date.
+      %label When?
+      = f.hidden_field :start_date, class: "form-control"
+      = f.hidden_field :end_date, class: "form-control"
+      %div.datepicker
+      %span Arrival and departure dates.
 
     .form-group
       = f.label :num_travelers, "How many total travelers?"

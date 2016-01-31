@@ -16,7 +16,8 @@
   <meta property="og:image" content="<%= image_url 'bernie-bnb-logo.png' %>" />
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 </head>
-<body>
+
+<body id="<%= params[:controller] %>" class="<%= params[:action] %>">
 
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
