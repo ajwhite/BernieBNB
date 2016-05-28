@@ -69,6 +69,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'capybara'
   gem 'simplecov'
+  gem 'webmock'
 end
 
 group :production, :staging do

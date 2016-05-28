@@ -1,46 +1,27 @@
 class UserMailer < ApplicationMailer
+  include Rails.application.routes.url_helpers
+  include ActionView::Helpers::UrlHelper
 
   def registration_confirmation(user)
     @user = user.decorate
-
-    client = Mailgun::Client.new(ENV['MAILGUN_API_KEY'])
-    message_params = {
+    
+    deliver_message(
       from: default_sender_address,
-      to: @user.email,
-      subject: "#{t('general.bernie').capitalize} BNB - Thanks for signing up!",
-      html: render_to_string(template: "app/views/user_mailer/welcome_email.html.erb").to_str
-    }
-
-    client.send_message(ENV['MAILGUN_DOMAIN'], message_params)
-    # mail(to: @user.email, subject: t('general.bernie').capitalize + ' BNB - Registration Confirmation')
+      to: user.email,
+      subject: "#{t('general.bernie').capitalize} BNB - Confirm Your Email",
+      html: template("user_mailer/registration_confirmation.html.erb")
+    )
   end
 
   def welcome_email(user)
     @user = user.decorate
-    # mail(to: @user.email, subject: t('general.bernie').capitalize + ' BNB - Thanks for signing up!',
-    #   template_path: 'user_mailer', template_name: 'welcome_email')
 
-    client = Mailgun::Client.new(ENV['MAILGUN_API_KEY'])
-    message_params = {
+    deliver_message(
       from: default_sender_address,
       to: @user.email,
       subject: "#{t('general.bernie').capitalize} BNB - Thanks for signing up!",
-      html: render_to_string(template: "app/views/user_mailer/welcome_email.html.erb").to_str
-    }
-    byebug
-    client.send_message(ENV['MAILGUN_DOMAIN'], message_params)
-  end
-
-  def test_email(user)
-    @user = user
-    client = Mailgun::Client.new(ENV['MAILGUN_API_KEY'])
-    message_params = {
-      from: "some-guy@some-crazy-domain.com",
-      to: user,
-      subject: 'testing 1, 2',
-      text: 'some email body'
-    }
-    client.send_message(ENV['MAILGUN_DOMAIN'], message_params)
+      html: template("user_mailer/welcome_email.html.erb")
+    )
   end
 
   def new_hosts_digest(visit, visitor, host_data)
@@ -49,10 +30,11 @@ class UserMailer < ApplicationMailer
 
     return unless @visitor
 
-    mail(
+    deliver_message(
+      from: default_sender_address,
       to: @visitor.email,
-      reply_to: 'DO_NOT_REPLY@berniebnb.com',
-      subject: 'BernieBNB - New hosts for your visit!'
+      subject: 'BernieBNB - New hosts for your visit!',
+      html: template("user_mailer/new_hosts_digest.html.erb")
     )
   end
 
@@ -62,16 +44,33 @@ class UserMailer < ApplicationMailer
 
     return if !@host || @contact_data.empty?
 
-    mail(
+    deliver_message(
+      from: default_sender_address,
       to: @host.email,
-      reply_to: 'DO_NOT_REPLY@berinebnb.com',
-      subject: "BernieBNB - You've been contacted!"
+      subject: "BernieBNB - You've been contacted!",
+      html: template("user_mailer/new_contacts_digest.html.erb")
     )
   end
 
   private
 
+  def deliver_message(message_params)
+    client.send_message(ENV['MAILGUN_DOMAIN'], message_params)
+  end
+
+  def client
+    Mailgun::Client.new(ENV['MAILGUN_API_KEY'])
+  end
+
   def default_sender_address
     "notifications@#{ENV['MAILGUN_DOMAIN']}"
+  end
+
+  def template(path)
+    template = ERB.new(
+      File.read("#{Rails.root}/app/views/#{path}")
+    )
+
+    template.result(binding)
   end
 end

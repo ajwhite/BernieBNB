@@ -6,6 +6,9 @@ require_relative '../support/feature_test_helper'
 RSpec.describe "User Signs Up With Facebook", type: :feature do
   before do
     Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
+
+    stub_response(:post, %r{mailgun})
+      .to_return(status: 201)
   end
 
   scenario 'starts session' do
