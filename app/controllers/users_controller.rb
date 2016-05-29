@@ -45,7 +45,7 @@ class UsersController < ApplicationController
       @user.email_activate
       sign_in!(@user)
 
-      UserMailer.welcome_email(@user).deliver_now
+      UserMailer.welcome_email(@user)
 
       redirect_to user_url(@user)
     else

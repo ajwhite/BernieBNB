@@ -1,4 +1,5 @@
 require 'simplecov'
+
 SimpleCov.start if ENV["COVERAGE"]
 
 require "capybara/rspec"
@@ -23,7 +24,6 @@ OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new({
 })
 
 OmniAuth.config.add_mock(:facebook, facebook_hash)
-
 
 RSpec.configure do |config|
   config.include(EmailSpec::Helpers)
