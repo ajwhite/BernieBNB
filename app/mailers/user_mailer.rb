@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
 
   def registration_confirmation(user)
     @user = user.decorate
-    
+
     deliver_message(
       from: default_sender_address,
       to: user.email,
@@ -55,7 +55,11 @@ class UserMailer < ApplicationMailer
   private
 
   def deliver_message(message_params)
-    client.send_message(ENV['MAILGUN_DOMAIN'], message_params)
+    if Rails.env == "test"
+      mail(message_params)
+    else
+      client.send_message(ENV['MAILGUN_DOMAIN'], message_params)
+    end
   end
 
   def client

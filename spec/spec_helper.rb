@@ -1,5 +1,4 @@
 require 'simplecov'
-require 'webmock/rspec'
 
 SimpleCov.start if ENV["COVERAGE"]
 
